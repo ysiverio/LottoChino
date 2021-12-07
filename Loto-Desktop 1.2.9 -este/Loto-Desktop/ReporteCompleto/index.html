@@ -1,0 +1,210 @@
+<html>
+    <header>
+        <style>
+#contenedor {
+    margin: 40px auto;
+    width: 750px;  /* Ancho del contenedor */
+box-sizing: border-box;
+-moz-box-sizing: border-box;
+}
+
+#contenedor input {
+height: 32px;
+visibility: hidden;
+}
+
+#contenedor label {
+float: left;
+cursor: pointer;
+font-size: 15px;  /* Tama?o del texto de las pesta?as */
+line-height: 40px;
+height: 40px;
+padding: 0 20px;
+display: block;
+color: #888;  /* Color del texto de las pesta?as */
+text-align: center;
+border-radius: 5px 5px 0 0;
+background: #eee;  /* Fondo de las pesta?as */
+margin-right: 5px;
+}
+
+#contenedor input:hover + label {
+background: #ddd;  /* Fondo de las pesta?as al pasar el cursor por encima */
+color: #666;  /* Color del texto de las pesta?as al pasar el cursor por encima */
+}
+
+#contenedor input:checked + label {
+background: #FFDA91;  /* Fondo de las pesta?as al presionar */
+color: #444; /* Color de las pesta?as al presionar */
+z-index: 6;
+line-height: 45px;
+height: 45px;
+position: relative;
+top: -5px;
+-webkit-transition: .1s;
+-moz-transition: .1s;
+-o-transition: .1s;
+-ms-transition: .1s;
+}
+
+.content {
+background: #FFDA91;  /* Fondo del contenido */
+position: relative;
+width: auto;
+height: auto;  /* Alto del contenido */
+/*padding: 10px;*/
+z-index: 5;
+border-radius: 0 5px 5px 5px;
+}
+
+.content div {
+position: absolute;
+z-index: -100;
+opacity: 0;
+transition: all linear 0.1s;
+}
+
+#contenedor input.tab-selector-1:checked ~ .content .content-1,
+#contenedor input.tab-selector-2:checked ~ .content .content-2,
+#contenedor input.tab-selector-3:checked ~ .content .content-3,
+#contenedor input.tab-selector-4:checked ~ .content .content-4 {
+    z-index: 100;
+    opacity: 1;
+    -webkit-transition: all ease-out 0.2s 0.1s;
+-moz-transition: all ease-out 0.2s 0.1s;
+-o-transition: all ease-out 0.2s 0.1s;
+-ms-transition: all ease-out 0.2s 0.1s;
+}
+        </style>
+    </header>
+<div style="text-align: center"><strong>Nota:</strong> A continuación se muestran los resultados de la lista y el bote generados automaticamente para la aplicación Lotto-Desktop 1.2.9 Beta.</div>
+<div id="contenedor">
+    <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" />
+    <label for="tab-1" class="tab-label-1">Bote</label>
+    
+    <input id="tab-2" type="radio" name="radio-set" class="tab-selector-2" />
+    <label for="tab-2" class="tab-label-2">Lista</label>
+                            
+    <div class="content">
+        <div class="content-1">
+            <table id="content-1" class="content">
+  <tr>
+    <th scope="col" style="padding-right: 30px">Lista</th>
+    <th scope="col" style="padding-right: 30px">Bruto</th>
+    <th scope="col" style="padding-right: 30px">Limpio</th>
+    <th scope="col" style="padding-right: 30px">Premio</th>
+    <th scope="col" style="padding-right: 30px">Gane</th>
+    <th scope="col" style="padding-right: 30px">Pierde</th>
+  </tr>
+ 
+
+ <tr>
+    <td style="padding-right: 30px"> LottoApp </td>
+    <td> 60137.0 </td>
+    <td> 54123.3 </td>
+    <td style="background:green; color: white;font-style: oblique"><strong>  0.0 </strong></td>
+    <td> 0.0 </td>
+    <td> 54123.3 </td>
+  </tr>
+
+ <tr>
+    <td style="padding-right: 30px"> Mario </td>
+    <td> 694.0 </td>
+    <td> 624.6 </td>
+    <td style="background:green; color: white;font-style: oblique"><strong>  0.0 </strong></td>
+    <td> 0.0 </td>
+    <td> 624.6 </td>
+  </tr>
+
+ <tr>
+    <td style="padding-right: 30px"> Tata </td>
+    <td> 662.0 </td>
+    <td> 595.8 </td>
+    <td style="background:green; color: white;font-style: oblique"><strong>  0.0 </strong></td>
+    <td> 0.0 </td>
+    <td> 595.8 </td>
+  </tr>
+
+ <tr>
+    <td style="padding-right: 30px"> LottoApp </td>
+    <td> 1.0 </td>
+    <td> 0.9 </td>
+    <td style="background:green; color: white;font-style: oblique"><strong>  0.0 </strong></td>
+    <td> 0.0 </td>
+    <td> 0.9 </td>
+  </tr>
+  
+ <tr>
+<tr>
+    <th scope="row" style="padding-right: 30px">TOTAL</th>
+    <td scope="row" style="padding-right: 30px"><strong> 61494.0 </strong></td>
+    <td scope="row" style="padding-right: 30px"><strong> 55344.600000000006 </strong></td>
+    <td scope="row" style="padding-right: 30px"><strong> 0.0 </strong></td>
+    <td scope="row" style="padding-right: 30px"><strong> 0.0 </strong></td>
+    <td scope="row" style="padding-right: 30px"><strong> 55344.600000000006 </strong></td>
+  </tr></table>
+        </div>
+        <div class="content-2">
+           <table id="content-1" class="content">
+  <tr>
+    <th scope="col" style="padding-right: 30px">Lista</th>
+    <th scope="col" style="padding-right: 30px">Bruto</th>
+    <th scope="col" style="padding-right: 30px">Limpio</th>
+    <th scope="col" style="padding-right: 30px">Premio</th>
+    <th scope="col" style="padding-right: 30px">Gane</th>
+    <th scope="col" style="padding-right: 30px">Pierde</th>
+  </tr>
+ 
+  <tr>
+
+ <tr>
+    <td style="padding-right: 30px"> LottoApp </td>
+    <td> 4137.0 </td>
+    <td> 3287.65 </td>
+    <td style="background:green; color: white;font-style: oblique"><strong>  0.0 </strong></td>
+    <td> 0.0 </td>
+    <td> 3287.65 </td>
+  </tr>
+
+ <tr>
+    <td style="padding-right: 30px"> Mario </td>
+    <td> 1768.0 </td>
+    <td> 1193.3 </td>
+    <td style="background:green; color: white;font-style: oblique"><strong>  724.4444444444445 </strong></td>
+    <td> 0.0 </td>
+    <td> 468.8555555555555 </td>
+  </tr>
+
+ <tr>
+    <td style="padding-right: 30px"> Tata </td>
+    <td> 5561.5 </td>
+    <td> 3899.9 </td>
+    <td style="background:green; color: white;font-style: oblique"><strong>  4208.333333333333 </strong></td>
+    <td> 308.43333333333294 </td>
+    <td> 0.0 </td>
+  </tr>
+
+ <tr>
+    <td style="padding-right: 30px"> LottoApp </td>
+    <td> 0.0 </td>
+    <td> 0.0 </td>
+    <td style="background:green; color: white;font-style: oblique"><strong>  0.0 </strong></td>
+    <td> 0.0 </td>
+    <td> 0.0 </td>
+  </tr>
+      
+ <tr>
+<tr>
+    <th scope="row" style="padding-right: 30px">TOTAL</th>
+    <td scope="row" style="padding-right: 30px"><strong> 11466.5 </strong></td>
+    <td scope="row" style="padding-right: 30px"><strong> 8380.85 </strong></td>
+    <td scope="row" style="padding-right: 30px"><strong> 4932.777777777777 </strong></td>
+    <td scope="row" style="padding-right: 30px"><strong> 308.43333333333294 </strong></td>
+    <td scope="row" style="padding-right: 30px"><strong> 3756.5055555555555 </strong></td>
+  </tr>
+</table>
+        </div>
+     
+    </div>
+</div>
+</html>
