@@ -34,7 +34,7 @@ public class principal extends javax.swing.JFrame {
 
     // Variables globales
     utiles ut = new utiles();
-    String texto = "", nombrelista = "", nombrelistaB = "", html = "", filaTabla = "", totalFilaTablaLista = "", totalFilaTablaBote = "", filasTablaLista = "", filasTablaBote = "";
+    String texto = "", nombrelista = "", nombrelistaB = "", html = "", filaTabla = "", totalFilaTablaLista = "", totalFilaTablaBote = "", filasTablaLista = "", filasTablaBote = "", filasTablaResumen = "", totalFilasTablaResumen = "";
     double valorVenta = 0, valorComision = 0, valorGanadores = 0, valorNeto = 0, valorVentaB = 0, valorComisionB = 0, valorGanadoresB = 0, valorNetoB = 0;
     double TotalVenta = 0, TotalComision = 0, TotalGanadores = 0, TotalNeto = 0, TotalVentaB = 0, TotalComisionB = 0, TotalGanadoresB = 0, TotalNetoB = 0;
     double pierde = 0.0D;
@@ -79,6 +79,8 @@ public class principal extends javax.swing.JFrame {
     ArrayList<Integer> preciosLimLista = new ArrayList<>();
     ArrayList<String> numerosLimLista = new ArrayList<>();
     ArrayList<String> numerosLimBote = new ArrayList<>();
+    
+    
 
     /**
      * Creates new form principal
@@ -108,6 +110,10 @@ public class principal extends javax.swing.JFrame {
         String[] confT = config[1].split(",");
         String[] confLimP = configLim[0].split("<");
         String[] confLimT = configLim[1].split("<");
+        
+        // Group Día noche
+        group_d_n.add(jrb_dia);
+        group_d_n.add(jrb_noche);
 
         // Config precios App
         tfCPBF.setText(confP[0]);
@@ -269,6 +275,7 @@ public class principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        group_d_n = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -340,13 +347,16 @@ public class principal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jlNombreLista = new javax.swing.JLabel();
         jLabel66 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtf_numerosTiro = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jCh_tipoParlet = new javax.swing.JCheckBox();
+        jCB_dias = new javax.swing.JComboBox<>();
+        jrb_dia = new javax.swing.JRadioButton();
+        jrb_noche = new javax.swing.JRadioButton();
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
@@ -1009,11 +1019,11 @@ public class principal extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jPanel9);
 
-        jTextField1.setToolTipText(bundle.getString("principal.toolTipText")); // NOI18N
-        jTextField1.setName(""); // NOI18N
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+        jtf_numerosTiro.setToolTipText(bundle.getString("principal.toolTipText")); // NOI18N
+        jtf_numerosTiro.setName(""); // NOI18N
+        jtf_numerosTiro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField1KeyTyped(evt);
+                jtf_numerosTiroKeyTyped(evt);
             }
         });
 
@@ -1060,6 +1070,14 @@ public class principal extends javax.swing.JFrame {
             }
         });
 
+        jCB_dias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado" }));
+
+        jrb_dia.setSelected(true);
+        jrb_dia.setText(bundle.getString("principal.jrb_dia.text")); // NOI18N
+
+        jrb_noche.setText(bundle.getString("principal.jrb_noche.text")); // NOI18N
+        jrb_noche.setActionCommand(bundle.getString("principal.jrb_noche.actionCommand")); // NOI18N
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
@@ -1073,7 +1091,7 @@ public class principal extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtf_numerosTiro, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1085,7 +1103,14 @@ public class principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCh_tipoParlet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addComponent(jCh_tipoParlet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jCB_dias, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jrb_dia)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jrb_noche)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1096,7 +1121,7 @@ public class principal extends javax.swing.JFrame {
                     .addComponent(jScrollPane2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtf_numerosTiro, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1105,7 +1130,12 @@ public class principal extends javax.swing.JFrame {
                     .addComponent(jButton4)
                     .addComponent(jButton7)
                     .addComponent(jCh_tipoParlet))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCB_dias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jrb_dia)
+                    .addComponent(jrb_noche))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab(bundle.getString("principal.jPanel10.TabConstraints.tabTitle"), jPanel10); // NOI18N
@@ -1983,7 +2013,7 @@ public class principal extends javax.swing.JFrame {
                 .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton6)
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(175, Short.MAX_VALUE))
         );
 
         jPanel25.getAccessibleContext().setAccessibleName(bundle.getString("principal.jPanel25.border.title")); // NOI18N
@@ -2004,92 +2034,6 @@ public class principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void gTiro() {
-        // TODO add your handling code here:
-        if (!jTextField1.getText().equals("")) {
-            //JOptionPane.showMessageDialog(null, "Se generará el tiro pasandole los números (" + jTextField1.getText() + ")", "Loto-Desktop Generar Tiro", WIDTH);
-
-            Boolean tipoParlet = jCh_tipoParlet.isSelected();
-            double[] tiro;
-            tiro = ut.generarTiro(jTextField1.getText().split(" "), ut.jugadaLimpia(jugada, dineroApuesta, apuesta), apuesta, dineroApuesta, listaBote, preciosLista, preciosBote, preciosLimLista, preciosLimBote, numerosLimLista, numerosLimBote, tipoParlet);
-
-            // Pongo el resultado del tiro en la lista y el bote
-            jLabel7.setText(String.valueOf(tiro[0]));
-            jLabel29.setText(String.valueOf(tiro[1]));
-
-            //Pongo el neto en la lista y el bote y le cambio los colores
-            jLabel8.setText("" + (Double.valueOf(jlLimpioBote.getText()) - tiro[0]));
-            if (Double.valueOf(jLabel8.getText()) < 0) {
-                jLabel8.setForeground(Color.red);
-            } else {
-                jLabel8.setForeground(Color.green);
-            }
-
-            jLabel30.setText("" + (Double.valueOf(jlLimpioLista.getText()) - tiro[1]));
-            if (Double.valueOf(jLabel30.getText()) < 0) {
-                jLabel30.setForeground(Color.red);
-            } else {
-                jLabel30.setForeground(Color.green);
-            }
-
-            jLabel22.setText("" + (Double.valueOf(jlLimpioTotal.getText()) - (tiro[1]) + tiro[0]));
-
-            // Pongo el total del ganador y el total del neto
-            jLabel21.setText(String.valueOf(tiro[0] + tiro[1]));
-            jLabel22.setText("" + (Math.rint(Double.valueOf(jLabel8.getText())) + Math.rint(Double.valueOf(jLabel30.getText()))));
-
-            if (Double.valueOf(jLabel22.getText()) < 0) {
-                jLabel22.setForeground(Color.red);
-            } else {
-                jLabel22.setForeground(Color.green);
-            }
-            System.out.println("" + (Double.valueOf(jLabel8.getText()) + Double.valueOf(jLabel30.getText())));
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Recuerde que debe introducir los números para generar el tiro", "Loto-Desktop Generar Tiro", WIDTH);
-
-        }
-    }
-
-
-  private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-      // TODO add your handling code here:
-      int tipo = JOptionPane.showConfirmDialog(null, "Se van a actializar los topes, está seguro de continuar", "Alerta", JOptionPane.INFORMATION_MESSAGE, JOptionPane.OK_CANCEL_OPTION);
-
-      if (tipo == 0) {
-          // para Escribir el fichero de texto
-          String texto
-                  = tfCPBF.getText() + "," + tfCPBC.getText() + "," + tfCPBP.getText() + "," + tfCPBCent.getText() + "," + tfPFPB.getText() + "," + tfPKPB.getText() + ","
-                  + tfCPFF.getText() + "," + tfCPFC.getText() + "," + tfCPFP.getText() + "," + tfCPFCent.getText() + "," + tfPFPL.getText() + "," + tfPKPL.getText() + ";"
-                  + tfCTBF.getText() + "," + tfCTBC.getText() + "," + tfCTBP.getText() + "," + tfCTBCent.getText() + "," + tfPFTB.getText() + "," + tfPKTB.getText() + ","
-                  + tfCTLF.getText() + "," + tfCTLC.getText() + "," + tfCTLP.getText() + "," + tfCTLCent.getText() + "," + tfPFTL.getText() + "," + tfPKTL.getText() + ";"
-                  + tfPCB.getText() + "," + tfPCL.getText() + ";";
-
-          try {
-
-              File f = new File("config.txt");
-
-              BufferedWriter fin
-                      = new BufferedWriter(
-                              new OutputStreamWriter(
-                                      new FileOutputStream(f)));
-
-              fin.write(texto);
-              fin.close();
-
-          } catch (Exception ex) {
-              System.out.println(ex);
-              //Log.e("Ficheros", "Error al leer fichero desde tarjeta SD");
-          }
-
-      } else {
-          System.out.println("NO");
-      }
-
-
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         int tipo = JOptionPane.showConfirmDialog(null, "Se van a actializar los números limitados y sus topes, está seguro de continuar", "Alerta", JOptionPane.INFORMATION_MESSAGE, JOptionPane.OK_CANCEL_OPTION);
@@ -2097,19 +2041,19 @@ public class principal extends javax.swing.JFrame {
         if (tipo == 0) {
             // para Escribir el fichero de texto
             String texto
-                    = limFijo.getText() + "<" + limCorrido.getText() + "<" + limParlet.getText() + "<" + limCentena.getText() + "<" + limPlayFall.getText() + "<" + limPik.getText() + "<"
-                    + limFijoLista.getText() + "<" + limCorridoLista.getText() + "<" + limParletLista.getText() + "<" + limCentenaLista.getText() + "<" + limPlayFLista.getText() + "<" + limPikLista.getText() + ";"
-                    + tLimFijo.getText() + "<" + tLimCorrido.getText() + "<" + tLimParlet.getText() + "<" + tLimCentena.getText() + "<" + tlimPlayFall.getText() + "<" + tLimPik.getText() + "<"
-                    + tLimFijoLista.getText() + "<" + tLimCorridolista.getText() + "<" + tLimpParletLista.getText() + "<" + tLimCentenaLista.getText() + "<" + tLimPlayFallLista.getText() + "<" + tLimPikLista.getText() + ";";
+            = limFijo.getText() + "<" + limCorrido.getText() + "<" + limParlet.getText() + "<" + limCentena.getText() + "<" + limPlayFall.getText() + "<" + limPik.getText() + "<"
+            + limFijoLista.getText() + "<" + limCorridoLista.getText() + "<" + limParletLista.getText() + "<" + limCentenaLista.getText() + "<" + limPlayFLista.getText() + "<" + limPikLista.getText() + ";"
+            + tLimFijo.getText() + "<" + tLimCorrido.getText() + "<" + tLimParlet.getText() + "<" + tLimCentena.getText() + "<" + tlimPlayFall.getText() + "<" + tLimPik.getText() + "<"
+            + tLimFijoLista.getText() + "<" + tLimCorridolista.getText() + "<" + tLimpParletLista.getText() + "<" + tLimCentenaLista.getText() + "<" + tLimPlayFallLista.getText() + "<" + tLimPikLista.getText() + ";";
 
             try {
 
                 File f = new File("configLim.txt");
 
                 BufferedWriter fin
-                        = new BufferedWriter(
-                                new OutputStreamWriter(
-                                        new FileOutputStream(f)));
+                = new BufferedWriter(
+                    new OutputStreamWriter(
+                        new FileOutputStream(f)));
 
                 fin.write(texto);
                 fin.close();
@@ -2123,6 +2067,45 @@ public class principal extends javax.swing.JFrame {
             System.out.println("NO");
         }
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        int tipo = JOptionPane.showConfirmDialog(null, "Se van a actializar los topes, está seguro de continuar", "Alerta", JOptionPane.INFORMATION_MESSAGE, JOptionPane.OK_CANCEL_OPTION);
+
+        if (tipo == 0) {
+            // para Escribir el fichero de texto
+            String texto
+            = tfCPBF.getText() + "," + tfCPBC.getText() + "," + tfCPBP.getText() + "," + tfCPBCent.getText() + "," + tfPFPB.getText() + "," + tfPKPB.getText() + ","
+            + tfCPFF.getText() + "," + tfCPFC.getText() + "," + tfCPFP.getText() + "," + tfCPFCent.getText() + "," + tfPFPL.getText() + "," + tfPKPL.getText() + ";"
+            + tfCTBF.getText() + "," + tfCTBC.getText() + "," + tfCTBP.getText() + "," + tfCTBCent.getText() + "," + tfPFTB.getText() + "," + tfPKTB.getText() + ","
+            + tfCTLF.getText() + "," + tfCTLC.getText() + "," + tfCTLP.getText() + "," + tfCTLCent.getText() + "," + tfPFTL.getText() + "," + tfPKTL.getText() + ";"
+            + tfPCB.getText() + "," + tfPCL.getText() + ";";
+
+            try {
+
+                File f = new File("config.txt");
+
+                BufferedWriter fin
+                = new BufferedWriter(
+                    new OutputStreamWriter(
+                        new FileOutputStream(f)));
+
+                fin.write(texto);
+                fin.close();
+
+            } catch (Exception ex) {
+                System.out.println(ex);
+                //Log.e("Ficheros", "Error al leer fichero desde tarjeta SD");
+            }
+
+        } else {
+            System.out.println("NO");
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jCh_tipoParletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCh_tipoParletActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCh_tipoParletActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
@@ -2184,9 +2167,9 @@ public class principal extends javax.swing.JFrame {
                 File f = new File(listas.get(z)/*selectedFile.toString()*/);
 
                 BufferedReader fin
-                        = new BufferedReader(
-                                new InputStreamReader(
-                                        new FileInputStream(f)));
+                = new BufferedReader(
+                    new InputStreamReader(
+                        new FileInputStream(f)));
 
                 text = fin.readLine();
 
@@ -2332,255 +2315,255 @@ public class principal extends javax.swing.JFrame {
                     cJLista++;
                     switch (((String[]) listJugInd.get(i))[3]) {
                         case "Fijo":
-                            String[] aux = ((String[]) listJugInd.get(i))[1].split("-");
-                            for (String aux1 : aux) {
-                                this.apFL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                            }
-                            this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                            this.apuesta.add("Fijo");
-                            this.listaBote.add("1");
-                            this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                            break;
+                        String[] aux = ((String[]) listJugInd.get(i))[1].split("-");
+                        for (String aux1 : aux) {
+                            this.apFL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                        }
+                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                        this.apuesta.add("Fijo");
+                        this.listaBote.add("1");
+                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                        break;
                         case "FijoCorridoF":
-                            String[] aux0 = ((String[]) listJugInd.get(i))[1].split("-");
-                            for (String aux01 : aux0) {
-                                this.apFL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                            }
-                            this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                            this.apuesta.add("FijoCorridoF");
-                            this.listaBote.add("1");
-                            this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                            break;
+                        String[] aux0 = ((String[]) listJugInd.get(i))[1].split("-");
+                        for (String aux01 : aux0) {
+                            this.apFL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                        }
+                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                        this.apuesta.add("FijoCorridoF");
+                        this.listaBote.add("1");
+                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                        break;
                         case "Corrido":
-                            String[] auxx = ((String[]) listJugInd.get(i))[1].split("-");
-                            for (String auxx1 : auxx) {
-                                this.apCL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                                System.out.println("corrido " + this.apCL);
-                            }
-                            this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                            this.apuesta.add("Corrido");
-                            this.listaBote.add("1");
-                            this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                            break;
+                        String[] auxx = ((String[]) listJugInd.get(i))[1].split("-");
+                        for (String auxx1 : auxx) {
+                            this.apCL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                            System.out.println("corrido " + this.apCL);
+                        }
+                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                        this.apuesta.add("Corrido");
+                        this.listaBote.add("1");
+                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                        break;
                         case "FijoCorridoC":
-                            String[] aux2 = ((String[]) listJugInd.get(i))[1].split("-");
-                            for (String aux21 : aux2) {
-                                this.apCL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                            }
-                            this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                            this.apuesta.add("FijoCorridoC");
-                            this.listaBote.add("1");
-                            this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                            break;
+                        String[] aux2 = ((String[]) listJugInd.get(i))[1].split("-");
+                        for (String aux21 : aux2) {
+                            this.apCL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                        }
+                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                        this.apuesta.add("FijoCorridoC");
+                        this.listaBote.add("1");
+                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                        break;
                         case "Parlet":
-                            this.apPL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                            this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                            this.apuesta.add("Parlet");
-                            this.listaBote.add("1");
-                            this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                            break;
+                        this.apPL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                        this.apuesta.add("Parlet");
+                        this.listaBote.add("1");
+                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                        break;
                         case "PlayF":
-                            this.apPFl += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                            this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                            this.apuesta.add("PlayF");
-                            this.listaBote.add("1");
-                            this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                            break;
+                        this.apPFl += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                        this.apuesta.add("PlayF");
+                        this.listaBote.add("1");
+                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                        break;
                         case "Pik":
-                            this.apPKL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                            this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                            this.apuesta.add("Pik");
-                            this.listaBote.add("1");
-                            this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                            break;
+                        this.apPKL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                        this.apuesta.add("Pik");
+                        this.listaBote.add("1");
+                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                        break;
                         case "Mill":
-                            this.apML += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                            this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                            this.apuesta.add("Mill");
-                            this.listaBote.add("1");
-                            this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                            break;
+                        this.apML += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                        this.apuesta.add("Mill");
+                        this.listaBote.add("1");
+                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                        break;
                         case "Candado":
-                            int contNum = 0;
-                            String aux1 = ((String[]) listJugInd.get(i))[1];
-                            for (int k = 0; k < aux1.length(); k++) {
-                                if (aux1.charAt(k) == '-') {
-                                    contNum++;
-                                }
+                        int contNum = 0;
+                        String aux1 = ((String[]) listJugInd.get(i))[1];
+                        for (int k = 0; k < aux1.length(); k++) {
+                            if (aux1.charAt(k) == '-') {
+                                contNum++;
                             }
-                            if (aux1.contains("(")) {
-                                contNum -= 1;
-                            }
-                            if (contNum == 1) {
-                                this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                            } else if (contNum == 2) {
-                                this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 3.0D;
-                            } else if (contNum == 3) {
-                                this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 6.0D;
-                            } else if (contNum == 4) {
-                                this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 10.0D;
-                            } else if (contNum == 5) {
-                                this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 15.0D;
-                            } else if (contNum == 6) {
-                                this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 21.0D;
-                            } else if (contNum == 7) {
-                                this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 28.0D;
-                            } else if (contNum == 8) {
-                                this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 36.0D;
-                            } else if (contNum == 9) {
-                                this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 45.0D;
-                            } else if (contNum == 10) {
-                                this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 55.0D;
-                            } else if (contNum == 11) {
-                                this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 66.0D;
-                            } else if (contNum == 12) {
-                                this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 78.0D;
-                            } else if (contNum == 13) {
-                                this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 91.0D;
-                            } else if (contNum == 14) {
-                                this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 105.0D;
-                            }
-                            this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                            this.apuesta.add("Candado");
-                            this.listaBote.add("1");
-                            this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                            break;
+                        }
+                        if (aux1.contains("(")) {
+                            contNum -= 1;
+                        }
+                        if (contNum == 1) {
+                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                        } else if (contNum == 2) {
+                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 3.0D;
+                        } else if (contNum == 3) {
+                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 6.0D;
+                        } else if (contNum == 4) {
+                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 10.0D;
+                        } else if (contNum == 5) {
+                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 15.0D;
+                        } else if (contNum == 6) {
+                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 21.0D;
+                        } else if (contNum == 7) {
+                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 28.0D;
+                        } else if (contNum == 8) {
+                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 36.0D;
+                        } else if (contNum == 9) {
+                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 45.0D;
+                        } else if (contNum == 10) {
+                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 55.0D;
+                        } else if (contNum == 11) {
+                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 66.0D;
+                        } else if (contNum == 12) {
+                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 78.0D;
+                        } else if (contNum == 13) {
+                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 91.0D;
+                        } else if (contNum == 14) {
+                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 105.0D;
+                        }
+                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                        this.apuesta.add("Candado");
+                        this.listaBote.add("1");
+                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                        break;
                         default:
-                            String[] aux3 = ((String[]) listJugInd.get(i))[1].split("-");
-                            for (String aux31 : aux3) {
-                                this.apCenL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                            }
-                            this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                            this.apuesta.add("Centena");
-                            this.listaBote.add("1");
-                            this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                        String[] aux3 = ((String[]) listJugInd.get(i))[1].split("-");
+                        for (String aux31 : aux3) {
+                            this.apCenL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                        }
+                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                        this.apuesta.add("Centena");
+                        this.listaBote.add("1");
+                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
                     }
                 } else {
                     cJBote++;
                     switch (((String[]) listJugInd.get(i))[3]) {
                         case "Fijo":
-                            String[] aux = ((String[]) listJugInd.get(i))[1].split("-");
-                            for (String aux1 : aux) {
-                                this.apFB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                            }
-                            this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                            this.apuesta.add("Fijo");
-                            this.listaBote.add("0");
-                            this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                            break;
+                        String[] aux = ((String[]) listJugInd.get(i))[1].split("-");
+                        for (String aux1 : aux) {
+                            this.apFB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                        }
+                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                        this.apuesta.add("Fijo");
+                        this.listaBote.add("0");
+                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                        break;
                         case "FijoCorridoF":
-                            String[] aux1 = ((String[]) listJugInd.get(i))[1].split("-");
-                            for (String aux11 : aux1) {
-                                this.apFB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                            }
-                            this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                            this.apuesta.add("FijoCorridoF");
-                            this.listaBote.add("0");
-                            this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                            break;
+                        String[] aux1 = ((String[]) listJugInd.get(i))[1].split("-");
+                        for (String aux11 : aux1) {
+                            this.apFB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                        }
+                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                        this.apuesta.add("FijoCorridoF");
+                        this.listaBote.add("0");
+                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                        break;
                         case "Corrido":
-                            String[] aux0 = ((String[]) listJugInd.get(i))[1].split("-");
-                            for (String aux01 : aux0) {
-                                this.apCB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                                System.out.println("Corrido " + this.apCB);
-                            }
-                            this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                            this.apuesta.add("Corrido");
-                            this.listaBote.add("0");
-                            this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                            break;
+                        String[] aux0 = ((String[]) listJugInd.get(i))[1].split("-");
+                        for (String aux01 : aux0) {
+                            this.apCB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                            System.out.println("Corrido " + this.apCB);
+                        }
+                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                        this.apuesta.add("Corrido");
+                        this.listaBote.add("0");
+                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                        break;
                         case "FijoCorridoC":
-                            String[] aux3 = ((String[]) listJugInd.get(i))[1].split("-");
-                            for (String aux31 : aux3) {
-                                this.apCB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                            }
-                            this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                            this.apuesta.add("FijoCorridoC");
-                            this.listaBote.add("0");
-                            this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                            break;
+                        String[] aux3 = ((String[]) listJugInd.get(i))[1].split("-");
+                        for (String aux31 : aux3) {
+                            this.apCB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                        }
+                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                        this.apuesta.add("FijoCorridoC");
+                        this.listaBote.add("0");
+                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                        break;
                         case "Parlet":
-                            this.apPB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                            this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                            this.apuesta.add("Parlet");
-                            this.listaBote.add("0");
-                            this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                            break;
+                        this.apPB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                        this.apuesta.add("Parlet");
+                        this.listaBote.add("0");
+                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                        break;
                         case "PlayF":
-                            this.apPFB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                            this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                            this.apuesta.add("PlayF");
-                            this.listaBote.add("0");
-                            this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                            break;
+                        this.apPFB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                        this.apuesta.add("PlayF");
+                        this.listaBote.add("0");
+                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                        break;
                         case "Pik":
-                            this.apPKb += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                            this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                            this.apuesta.add("Pik");
-                            this.listaBote.add("0");
-                            this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                            break;
+                        this.apPKb += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                        this.apuesta.add("Pik");
+                        this.listaBote.add("0");
+                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                        break;
                         case "Mill":
-                            this.apMb += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                            this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                            this.apuesta.add("Mill");
-                            this.listaBote.add("0");
-                            this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                            break;
+                        this.apMb += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                        this.apuesta.add("Mill");
+                        this.listaBote.add("0");
+                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                        break;
                         case "Candado":
-                            int contNum = 0;
-                            String auxx = ((String[]) listJugInd.get(i))[1];
-                            for (int k = 0; k < auxx.length(); k++) {
-                                if (auxx.charAt(k) == '-') {
-                                    contNum++;
-                                }
+                        int contNum = 0;
+                        String auxx = ((String[]) listJugInd.get(i))[1];
+                        for (int k = 0; k < auxx.length(); k++) {
+                            if (auxx.charAt(k) == '-') {
+                                contNum++;
                             }
-                            if (auxx.contains("(")) {
-                                contNum -= 1;
-                            }
-                            if (contNum == 1) {
-                                this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                            } else if (contNum == 2) {
-                                this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 3.0D;
-                            } else if (contNum == 3) {
-                                this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 6.0D;
-                            } else if (contNum == 4) {
-                                this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 10.0D;
-                            } else if (contNum == 5) {
-                                this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 15.0D;
-                            } else if (contNum == 6) {
-                                this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 21.0D;
-                            } else if (contNum == 7) {
-                                this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 28.0D;
-                            } else if (contNum == 8) {
-                                this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 36.0D;
-                            } else if (contNum == 9) {
-                                this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 45.0D;
-                            } else if (contNum == 10) {
-                                this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 55.0D;
-                            } else if (contNum == 11) {
-                                this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 66.0D;
-                            } else if (contNum == 12) {
-                                this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 78.0D;
-                            } else if (contNum == 13) {
-                                this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 91.0D;
-                            } else if (contNum == 14) {
-                                this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 105.0D;
-                            }
-                            this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                            this.apuesta.add("Candado");
-                            this.listaBote.add("0");
-                            this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                            break;
+                        }
+                        if (auxx.contains("(")) {
+                            contNum -= 1;
+                        }
+                        if (contNum == 1) {
+                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                        } else if (contNum == 2) {
+                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 3.0D;
+                        } else if (contNum == 3) {
+                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 6.0D;
+                        } else if (contNum == 4) {
+                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 10.0D;
+                        } else if (contNum == 5) {
+                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 15.0D;
+                        } else if (contNum == 6) {
+                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 21.0D;
+                        } else if (contNum == 7) {
+                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 28.0D;
+                        } else if (contNum == 8) {
+                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 36.0D;
+                        } else if (contNum == 9) {
+                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 45.0D;
+                        } else if (contNum == 10) {
+                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 55.0D;
+                        } else if (contNum == 11) {
+                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 66.0D;
+                        } else if (contNum == 12) {
+                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 78.0D;
+                        } else if (contNum == 13) {
+                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 91.0D;
+                        } else if (contNum == 14) {
+                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 105.0D;
+                        }
+                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                        this.apuesta.add("Candado");
+                        this.listaBote.add("0");
+                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                        break;
                         default:
-                            String[] aux4 = ((String[]) listJugInd.get(i))[1].split("-");
-                            for (String aux41 : aux4) {
-                                this.apCenB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                            }
-                            this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                            this.apuesta.add("Centena");
-                            this.listaBote.add("0");
-                            this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                        String[] aux4 = ((String[]) listJugInd.get(i))[1].split("-");
+                        for (String aux41 : aux4) {
+                            this.apCenB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                        }
+                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                        this.apuesta.add("Centena");
+                        this.listaBote.add("0");
+                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
                     }
                 }
             }
@@ -2651,118 +2634,144 @@ public class principal extends javax.swing.JFrame {
             Directorio dir = new Directorio();
 
             ArrayList<String> rutasLista = ut.getRutaFicheros(dir.get().getPath() + "\\Reporte\\");
-            //JOptionPane.showMessageDialog(null, "Reportes: " + dir.get().getPath() + "\\Reporte\\");
-            ArrayList<String> fichero = ut.leerFichero(rutasLista);
+                ArrayList<String> rutasListaResumen = ut.getRutaFicheros(dir.get().getPath() + "\\ReporteResumen\\");
+                    //JOptionPane.showMessageDialog(null, "Reportes: " + dir.get().getPath() + "\\Reporte\\");
+                        ArrayList<String> fichero = ut.leerFichero(rutasLista);
+                        ArrayList<String> ficheroResumen = ut.leerFichero(rutasListaResumen);
 
-            // Contruyo la tabla de la lista
-            for (int i = 0; i < fichero.size(); i++) {
-                String lista = (String) fichero.get(i);
-                String[] partesLista = lista.split(";");
+                        // Contruyo la tabla de la lista
+                        for (int i = 0; i < fichero.size(); i++) {
+                            String lista = (String) fichero.get(i);
+                            String[] partesLista = lista.split(";");
 
-                this.nombrelista = partesLista[0];
-                this.valorVenta = Double.parseDouble(partesLista[1]);
-                this.valorComision = Double.parseDouble(partesLista[2]);
-                this.valorGanadores = Double.parseDouble(partesLista[3]);
-                this.pierde = Double.parseDouble(partesLista[4]);
-                this.gane = Double.parseDouble(partesLista[5]);
+                            this.nombrelista = partesLista[0];
+                            this.valorVenta = Double.parseDouble(partesLista[1]);
+                            this.valorComision = Double.parseDouble(partesLista[2]);
+                            this.valorGanadores = Double.parseDouble(partesLista[3]);
+                            this.pierde = Double.parseDouble(partesLista[4]);
+                            this.gane = Double.parseDouble(partesLista[5]);
 
-                this.filaTabla = (" <tr>\n    <td style=\"padding-right: 30px\"> " + this.nombrelista + " </td>\n" + "    <td> " + this.valorVenta + " </td>\n" + "    <td> " + this.valorComision + " </td>\n" + "    <td style=\"background:green; color: white;font-style: oblique\"><strong>  " + this.valorGanadores + " </strong></td>\n" + "    <td> " + this.gane + " </td>\n" + "    <td> " + this.pierde + " </td>\n" + "  </tr>");
+                            this.filaTabla = (" <tr>\n    <td style=\"padding-right: 30px\"> " + this.nombrelista + " </td>\n" + "    <td> " + this.valorVenta + " </td>\n" + "    <td> " + this.valorComision + " </td>\n" + "    <td style=\"background:green; color: white;font-style: oblique\"><strong>  " + this.valorGanadores + " </strong></td>\n" + "    <td> " + this.gane + " </td>\n" + "    <td> " + this.pierde + " </td>\n" + "  </tr>");
 
-                this.filasTablaLista = (this.filasTablaLista + "\n" + this.filaTabla + "\n");
+                            this.filasTablaLista = (this.filasTablaLista + "\n" + this.filaTabla + "\n");
 
-                this.TotalVenta += this.valorVenta;
-                this.TotalComision += this.valorComision;
-                this.TotalGanadores += this.valorGanadores;
-                this.TotalNeto += this.gane;
-                this.TotalPierde += this.pierde;
-            }
-            this.totalFilaTablaLista = ("<tr>\n    <th scope=\"row\" style=\"padding-right: 30px\">TOTAL</th>\n    <td scope=\"row\" style=\"padding-right: 30px\"><strong> " + this.TotalVenta + " </strong></td>\n" + "    <td scope=\"row\" style=\"padding-right: 30px\"><strong> " + this.TotalComision + " </strong></td>\n" + "    <td scope=\"row\" style=\"padding-right: 30px\"><strong> " + this.TotalGanadores + " </strong></td>\n" + "    <td scope=\"row\" style=\"padding-right: 30px\"><strong> " + this.TotalNeto + " </strong></td>\n" + "    <td scope=\"row\" style=\"padding-right: 30px\"><strong> " + this.TotalPierde + " </strong></td>\n" + "  </tr>");
+                            this.TotalVenta += this.valorVenta;
+                            this.TotalComision += this.valorComision;
+                            this.TotalGanadores += this.valorGanadores;
+                            this.TotalNeto += this.gane;
+                            this.TotalPierde += this.pierde;
+                        }
+                        this.totalFilaTablaLista = ("<tr>\n    <th scope=\"row\" style=\"padding-right: 30px\">TOTAL</th>\n    <td scope=\"row\" style=\"padding-right: 30px\"><strong> " + this.TotalVenta + " </strong></td>\n" + "    <td scope=\"row\" style=\"padding-right: 30px\"><strong> " + this.TotalComision + " </strong></td>\n" + "    <td scope=\"row\" style=\"padding-right: 30px\"><strong> " + this.TotalGanadores + " </strong></td>\n" + "    <td scope=\"row\" style=\"padding-right: 30px\"><strong> " + this.TotalNeto + " </strong></td>\n" + "    <td scope=\"row\" style=\"padding-right: 30px\"><strong> " + this.TotalPierde + " </strong></td>\n" + "  </tr>");
 
-            this.pierde = 0.0D;
-            this.gane = 0.0D;
-            this.valorGanadores = 0.0D;
-            this.valorComision = 0.0D;
-            this.valorVenta = 0.0D;
-            this.TotalComision = 0.0D;
-            this.TotalNeto = 0.0D;
-            this.TotalPierde = 0.0D;
-            this.TotalGanadores = 0.0D;
-            this.TotalVenta = 0.0D;
-            for (int i = 0; i < fichero.size(); i++) {
-                String lista = (String) fichero.get(i);
-                String[] partesLista = lista.split(";");
+                        this.pierde = 0.0D;
+                        this.gane = 0.0D;
+                        this.valorGanadores = 0.0D;
+                        this.valorComision = 0.0D;
+                        this.valorVenta = 0.0D;
+                        this.TotalComision = 0.0D;
+                        this.TotalNeto = 0.0D;
+                        this.TotalPierde = 0.0D;
+                        this.TotalGanadores = 0.0D;
+                        this.TotalVenta = 0.0D;
 
-                this.nombrelistaB = partesLista[0];
-                this.valorVentaB = Double.parseDouble(partesLista[6]);
-                this.valorComisionB = Double.parseDouble(partesLista[7]);
-                this.valorGanadoresB = Double.parseDouble(partesLista[8]);
-                this.pierdeB = Double.parseDouble(partesLista[9]);
-                this.ganeB = Double.parseDouble(partesLista[10]);
+                        for (int i = 0; i < fichero.size(); i++) {
+                            String lista = (String) fichero.get(i);
+                            String[] partesLista = lista.split(";");
 
-                this.filaTabla = (" <tr>\n    <td style=\"padding-right: 30px\"> " + this.nombrelistaB + " </td>\n" + "    <td> " + this.valorVentaB + " </td>\n" + "    <td> " + this.valorComisionB + " </td>\n" + "    <td style=\"background:green; color: white;font-style: oblique\"><strong>  " + this.valorGanadoresB + " </strong></td>\n" + "    <td> " + this.ganeB + " </td>\n" + "    <td> " + this.pierdeB + " </td>\n" + "  </tr>");
+                            this.nombrelistaB = partesLista[0];
+                            this.valorVentaB = Double.parseDouble(partesLista[6]);
+                            this.valorComisionB = Double.parseDouble(partesLista[7]);
+                            this.valorGanadoresB = Double.parseDouble(partesLista[8]);
+                            this.pierdeB = Double.parseDouble(partesLista[9]);
+                            this.ganeB = Double.parseDouble(partesLista[10]);
 
-                this.filasTablaBote = (this.filasTablaBote + "\n" + this.filaTabla + "\n");
+                            this.filaTabla = (" <tr>\n    <td style=\"padding-right: 30px\"> " + this.nombrelistaB + " </td>\n" + "    <td> " + this.valorVentaB + " </td>\n" + "    <td> " + this.valorComisionB + " </td>\n" + "    <td style=\"background:green; color: white;font-style: oblique\"><strong>  " + this.valorGanadoresB + " </strong></td>\n" + "    <td> " + this.ganeB + " </td>\n" + "    <td> " + this.pierdeB + " </td>\n" + "  </tr>");
 
-                this.TotalVentaB += this.valorVentaB;
-                this.TotalComisionB += this.valorComisionB;
-                this.TotalGanadoresB += this.valorGanadoresB;
-                this.TotalNetoB += this.ganeB;
-                this.TotalPierdeB += this.pierdeB;
-            }
-            this.totalFilaTablaBote = ("<tr>\n    <th scope=\"row\" style=\"padding-right: 30px\">TOTAL</th>\n    <td scope=\"row\" style=\"padding-right: 30px\"><strong> " + this.TotalVentaB + " </strong></td>\n" + "    <td scope=\"row\" style=\"padding-right: 30px\"><strong> " + this.TotalComisionB + " </strong></td>\n" + "    <td scope=\"row\" style=\"padding-right: 30px\"><strong> " + this.TotalGanadoresB + " </strong></td>\n" + "    <td scope=\"row\" style=\"padding-right: 30px\"><strong> " + this.TotalNetoB + " </strong></td>\n" + "    <td scope=\"row\" style=\"padding-right: 30px\"><strong> " + this.TotalPierdeB + " </strong></td>\n" + "  </tr>");
+                            this.filasTablaBote = (this.filasTablaBote + "\n" + this.filaTabla + "\n");
 
-            this.pierdeB = 0.0D;
-            this.ganeB = 0.0D;
-            this.valorGanadoresB = 0.0D;
-            this.valorComisionB = 0.0D;
-            this.valorVentaB = 0.0D;
-            this.TotalComisionB = 0.0D;
-            this.TotalNetoB = 0.0D;
-            this.TotalPierdeB = 0.0D;
-            this.TotalGanadoresB = 0.0D;
-            this.TotalVentaB = 0.0D;
+                            this.TotalVentaB += this.valorVentaB;
+                            this.TotalComisionB += this.valorComisionB;
+                            this.TotalGanadoresB += this.valorGanadoresB;
+                            this.TotalNetoB += this.ganeB;
+                            this.TotalPierdeB += this.pierdeB;
+                        }
 
-            utiles.eliminarPorExtension(Directorio.get().getPath() + "\\ReporteCompleto\\", "html");
+                        // Pongo los datos del resumen en el html
+                        for (int i = 0; i < ficheroResumen.size(); i++) {
+                            String lista = (String) ficheroResumen.get(i);
+                            String[] partesLista = lista.split(";");
 
-            this.ut.generarReporteHtml(this.ut.getHtmlReporte(this.filasTablaLista, this.totalFilaTablaLista, this.filasTablaBote, this.totalFilaTablaBote));
+                            String nombreLista = partesLista[1];
+                            String diaSemana = partesLista[0];
+                            Double limpio = Double.parseDouble(partesLista[2]);
+                            Double gana = Double.parseDouble(partesLista[4]);
+                            Double pierde = Double.parseDouble(partesLista[3]);
+                            Double fondo = Double.parseDouble(partesLista[5]);
+                            String numTiro = partesLista[6];
 
-            this.texto = "";
-            this.nombrelista = "";
-            this.nombrelistaB = "";
-            this.html = "";
-            this.filaTabla = "";
-            this.totalFilaTablaLista = "";
-            this.totalFilaTablaBote = "";
-            this.filasTablaLista = "";
-            this.filasTablaBote = "";
-            this.valorVenta = 0.0D;
-            this.valorComision = 0.0D;
-            this.valorGanadores = 0.0D;
-            this.valorNeto = 0.0D;
-            this.valorVentaB = 0.0D;
-            this.valorComisionB = 0.0D;
-            this.valorGanadoresB = 0.0D;
-            this.valorNetoB = 0.0D;
-            this.TotalVenta = 0.0D;
-            this.TotalComision = 0.0D;
-            this.TotalGanadores = 0.0D;
-            this.TotalNeto = 0.0D;
-            this.TotalVentaB = 0.0D;
-            this.TotalComisionB = 0.0D;
-            this.TotalGanadoresB = 0.0D;
-            this.TotalNetoB = 0.0D;
+                            this.filasTablaResumen = (" <tr>\n    <td style=\"padding-right: 30px\"> " + diaSemana + " </td>\n" + "    <td style=\"padding-right: 30px\" > " + nombreLista + " </td>\n" + "    <td style=\"padding-right: 30px\"> " + limpio + " </td>\n" + "    <td style=\"padding-right: 30px\">" + gana + " </td>\n" + "    <td style=\"padding-right: 30px\"> " + pierde + " </td>\n" + "    <td style=\"padding-right: 30px\"> " + fondo + " </td>\n" +"    <td style=\"padding-right: 30px\"> " + numTiro + " </td>\n" +"  </tr>");
+                            this.totalFilasTablaResumen = (this.totalFilasTablaResumen + "\n" + this.filasTablaResumen + "\n");
 
-            utiles.eliminarPorExtension(rutaListas, "txt");
-            openURL(Directorio.get().getPath() + "/ReporteCompleto/index.html");
-        } else {
-            System.out.println("cancelada");
-        }
+                        }
+
+                        this.totalFilaTablaBote = ("<tr>\n    <th scope=\"row\" style=\"padding-right: 30px\">TOTAL</th>\n    <td scope=\"row\" style=\"padding-right: 30px\"><strong> " + this.TotalVentaB + " </strong></td>\n" + "    <td scope=\"row\" style=\"padding-right: 30px\"><strong> " + this.TotalComisionB + " </strong></td>\n" + "    <td scope=\"row\" style=\"padding-right: 30px\"><strong> " + this.TotalGanadoresB + " </strong></td>\n" + "    <td scope=\"row\" style=\"padding-right: 30px\"><strong> " + this.TotalNetoB + " </strong></td>\n" + "    <td scope=\"row\" style=\"padding-right: 30px\"><strong> " + this.TotalPierdeB + " </strong></td>\n" + "  </tr>");
+
+                        this.pierdeB = 0.0D;
+                        this.ganeB = 0.0D;
+                        this.valorGanadoresB = 0.0D;
+                        this.valorComisionB = 0.0D;
+                        this.valorVentaB = 0.0D;
+                        this.TotalComisionB = 0.0D;
+                        this.TotalNetoB = 0.0D;
+                        this.TotalPierdeB = 0.0D;
+                        this.TotalGanadoresB = 0.0D;
+                        this.TotalVentaB = 0.0D;
+
+                        utiles.eliminarPorExtension(Directorio.get().getPath() + "\\ReporteCompleto\\", "html");
+                            utiles.eliminarPorExtension(Directorio.get().getPath() + "\\ResumenCompleto\\", "html");
+
+                                this.ut.generarReporteHtml(this.ut.getHtmlReporte(this.filasTablaLista, this.totalFilaTablaLista, this.filasTablaBote, this.totalFilaTablaBote));
+                                this.ut.generarResumenHtml(this.ut.getHtmlResumen(totalFilasTablaResumen, ""));
+
+                                this.texto = "";
+                                this.nombrelista = "";
+                                this.nombrelistaB = "";
+                                this.html = "";
+                                this.filaTabla = "";
+                                this.totalFilaTablaLista = "";
+                                this.totalFilaTablaBote = "";
+                                this.filasTablaLista = "";
+                                this.filasTablaBote = "";
+                                this.valorVenta = 0.0D;
+                                this.valorComision = 0.0D;
+                                this.valorGanadores = 0.0D;
+                                this.valorNeto = 0.0D;
+                                this.valorVentaB = 0.0D;
+                                this.valorComisionB = 0.0D;
+                                this.valorGanadoresB = 0.0D;
+                                this.valorNetoB = 0.0D;
+                                this.TotalVenta = 0.0D;
+                                this.TotalComision = 0.0D;
+                                this.TotalGanadores = 0.0D;
+                                this.TotalNeto = 0.0D;
+                                this.TotalVentaB = 0.0D;
+                                this.TotalComisionB = 0.0D;
+                                this.TotalGanadoresB = 0.0D;
+                                this.TotalNetoB = 0.0D;
+
+                                utiles.eliminarPorExtension(rutaListas, "txt");
+                                openURL(Directorio.get().getPath() + "/ReporteCompleto/index.html");
+                                openURL(Directorio.get().getPath() + "/ResumenCompleto/index.html");
+                            } else {
+                                System.out.println("cancelada");
+                            }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
 
         String ruta = dir.get().getPath() + "/Reporte/";
+        String rutaResumen = dir.get().getPath() + "/ReporteResumen/";
         Calendar c = Calendar.getInstance();
         int hora, minutos, segundos, mili;
         hora = c.get(Calendar.HOUR_OF_DAY);
@@ -2771,6 +2780,7 @@ public class principal extends javax.swing.JFrame {
         mili = c.get(Calendar.MILLISECOND);
 
         File archivo = new File(ruta + "" + hora + "_" + minutos + "_" + segundos + "_" + mili + ".txt");
+        File archivo_resumen = new File(rutaResumen+ "" + hora + "_" + minutos + "_" + segundos + "_" + mili + ".txt");
 
         double comisionB = Double.valueOf(this.jlBrutoBote.getText()).doubleValue() * Double.valueOf(this.tfPCB.getText()).doubleValue();
 
@@ -2782,28 +2792,31 @@ public class principal extends javax.swing.JFrame {
         double pierdeL = 0.0D;
         double pierdeB = 0.0D;
         if ((Double.valueOf(this.jlLimpioLista.getText()).doubleValue() > 0.0D)
-                && (Double.valueOf(this.jLabel29.getText()).doubleValue() < Double.valueOf(this.jlLimpioLista.getText()).doubleValue())) {
+            && (Double.valueOf(this.jLabel29.getText()).doubleValue() < Double.valueOf(this.jlLimpioLista.getText()).doubleValue())) {
             double pierd = Double.valueOf(this.jlLimpioLista.getText()).doubleValue() - Double.valueOf(this.jLabel29.getText()).doubleValue();
             ganeL = Double.valueOf(pierd).doubleValue();
             pierdeL = 0.0D;
         } else if ((Double.valueOf(this.jlLimpioLista.getText()).doubleValue() > 0.0D)
-                && (Double.valueOf(this.jLabel29.getText()).doubleValue() > Double.valueOf(this.jlLimpioLista.getText()).doubleValue())) {
+            && (Double.valueOf(this.jLabel29.getText()).doubleValue() > Double.valueOf(this.jlLimpioLista.getText()).doubleValue())) {
             double pierd = Double.valueOf(this.jLabel29.getText()).doubleValue() - Double.valueOf(this.jlLimpioLista.getText()).doubleValue();
             ganeL = 0.0D;
             pierdeL = pierd;
         }
         if ((Double.valueOf(this.jlLimpioBote.getText()).doubleValue() > 0.0D)
-                && (Double.valueOf(this.jLabel7.getText()).doubleValue() < Double.valueOf(this.jlLimpioBote.getText()).doubleValue())) {
+            && (Double.valueOf(this.jLabel7.getText()).doubleValue() < Double.valueOf(this.jlLimpioBote.getText()).doubleValue())) {
             double pierd = Double.valueOf(this.jlLimpioBote.getText()).doubleValue() - Double.valueOf(this.jLabel7.getText()).doubleValue();
             ganeB = Double.valueOf(pierd).doubleValue();
             pierdeB = 0.0D;
         } else if ((Double.valueOf(this.jlLimpioBote.getText()).doubleValue() > 0.0D)
-                && (Double.valueOf(this.jLabel7.getText()).doubleValue() > Double.valueOf(this.jlLimpioBote.getText()).doubleValue())) {
+            && (Double.valueOf(this.jLabel7.getText()).doubleValue() > Double.valueOf(this.jlLimpioBote.getText()).doubleValue())) {
             double pierd = Double.valueOf(this.jLabel7.getText()).doubleValue() - Double.valueOf(this.jlLimpioBote.getText()).doubleValue();
             ganeB = 0.0D;
             pierdeB = pierd;
         }
         String text = this.jlNombreLista.getText() + ";" + this.jlBrutoLista.getText() + ";" + LimpioL + ";" + this.jLabel29.getText() + ";" + ganeL + ";" + pierdeL + ";" + this.jlBrutoBote.getText() + ";" + LimpioB + ";" + this.jLabel7.getText() + ";" + ganeB + ";" + pierdeB + ";";
+
+        // Para el reporta de la semana
+        String textResumen = jCB_dias.getSelectedItem().toString() + (jrb_dia.isSelected()== true ? " Día" : " Noche") + ";" + this.jlNombreLista.getText() + ";" +(LimpioL + LimpioB) + ";" + (ganeL + ganeB) + ";" + (pierdeL + pierdeB) + ";" + 0.0 + ";" + jtf_numerosTiro.getText() + ";";
 
         try {
             BufferedWriter bw;
@@ -2816,8 +2829,24 @@ public class principal extends javax.swing.JFrame {
                 bw = new BufferedWriter(new FileWriter(archivo));
                 bw.write(text);
             }
+
             bw.close();
             System.out.println("SI");
+
+            // Creo los ficheros de los archivos del resumen de la semana
+            BufferedWriter bww;
+            if (archivo_resumen.exists()) {
+                archivo_resumen = new File(rutaResumen + "" + hora + "_" + minutos + "_" + segundos + "_" + mili + "_" + segundos + ".txt");
+                bww = new BufferedWriter(new FileWriter(archivo_resumen));
+                bww.write(textResumen);
+
+            } else {
+                bww = new BufferedWriter(new FileWriter(archivo_resumen));
+                bww.write(textResumen);
+            }
+
+            bww.close();
+            System.out.println("SIII");
 
             JOptionPane.showMessageDialog(null, "Reporte creado correctamente...");
         } catch (Exception ex) {
@@ -3021,255 +3050,255 @@ public class principal extends javax.swing.JFrame {
                 cJLista++;
                 switch (((String[]) listJugInd.get(i))[3]) {
                     case "Fijo":
-                        String[] aux = ((String[]) listJugInd.get(i))[1].split("-");
-                        for (int k = 0; k < aux.length; k++) {
-                            this.apFL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                        }
-                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                        this.apuesta.add("Fijo");
-                        this.listaBote.add("1");
-                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                        break;
+                    String[] aux = ((String[]) listJugInd.get(i))[1].split("-");
+                    for (int k = 0; k < aux.length; k++) {
+                        this.apFL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                    }
+                    this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                    this.apuesta.add("Fijo");
+                    this.listaBote.add("1");
+                    this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                    break;
                     case "FijoCorridoF":
-                        String[] aux0 = ((String[]) listJugInd.get(i))[1].split("-");
-                        for (int k = 0; k < aux0.length; k++) {
-                            this.apFL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                        }
-                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                        this.apuesta.add("FijoCorridoF");
-                        this.listaBote.add("1");
-                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                        break;
+                    String[] aux0 = ((String[]) listJugInd.get(i))[1].split("-");
+                    for (int k = 0; k < aux0.length; k++) {
+                        this.apFL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                    }
+                    this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                    this.apuesta.add("FijoCorridoF");
+                    this.listaBote.add("1");
+                    this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                    break;
                     case "Corrido":
-                        String[] auxx = ((String[]) listJugInd.get(i))[1].split("-");
-                        for (int k = 0; k < auxx.length; k++) {
-                            this.apCL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                            System.out.println("corrido " + this.apCL);
-                        }
-                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                        this.apuesta.add("Corrido");
-                        this.listaBote.add("1");
-                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                        break;
+                    String[] auxx = ((String[]) listJugInd.get(i))[1].split("-");
+                    for (int k = 0; k < auxx.length; k++) {
+                        this.apCL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                        System.out.println("corrido " + this.apCL);
+                    }
+                    this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                    this.apuesta.add("Corrido");
+                    this.listaBote.add("1");
+                    this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                    break;
                     case "FijoCorridoC":
-                        String[] aux2 = ((String[]) listJugInd.get(i))[1].split("-");
-                        for (int k = 0; k < aux2.length; k++) {
-                            this.apCL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                        }
-                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                        this.apuesta.add("FijoCorridoC");
-                        this.listaBote.add("1");
-                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                        break;
+                    String[] aux2 = ((String[]) listJugInd.get(i))[1].split("-");
+                    for (int k = 0; k < aux2.length; k++) {
+                        this.apCL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                    }
+                    this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                    this.apuesta.add("FijoCorridoC");
+                    this.listaBote.add("1");
+                    this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                    break;
                     case "Parlet":
-                        this.apPL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                        this.apuesta.add("Parlet");
-                        this.listaBote.add("1");
-                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                        break;
+                    this.apPL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                    this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                    this.apuesta.add("Parlet");
+                    this.listaBote.add("1");
+                    this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                    break;
                     case "PlayF":
-                        this.apPFl += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                        this.apuesta.add("PlayF");
-                        this.listaBote.add("1");
-                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                        break;
+                    this.apPFl += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                    this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                    this.apuesta.add("PlayF");
+                    this.listaBote.add("1");
+                    this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                    break;
                     case "Pik":
-                        this.apPKL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                        this.apuesta.add("Pik");
-                        this.listaBote.add("1");
-                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                        break;
+                    this.apPKL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                    this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                    this.apuesta.add("Pik");
+                    this.listaBote.add("1");
+                    this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                    break;
                     case "Mill":
-                        this.apML += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                        this.apuesta.add("Mill");
-                        this.listaBote.add("1");
-                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                        break;
+                    this.apML += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                    this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                    this.apuesta.add("Mill");
+                    this.listaBote.add("1");
+                    this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                    break;
                     case "Candado":
-                        int contNum = 0;
-                        String aux1 = ((String[]) listJugInd.get(i))[1];
-                        for (int k = 0; k < aux1.length(); k++) {
-                            if (aux1.charAt(k) == '-') {
-                                contNum++;
-                            }
+                    int contNum = 0;
+                    String aux1 = ((String[]) listJugInd.get(i))[1];
+                    for (int k = 0; k < aux1.length(); k++) {
+                        if (aux1.charAt(k) == '-') {
+                            contNum++;
                         }
-                        if (aux1.contains("(")) {
-                            contNum -= 1;
-                        }
-                        if (contNum == 1) {
-                            //this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                        } else if (contNum == 2) {
-                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 3.0D;
-                        } else if (contNum == 3) {
-                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 6.0D;
-                        } else if (contNum == 4) {
-                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 10.0D;
-                        } else if (contNum == 5) {
-                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 15.0D;
-                        } else if (contNum == 6) {
-                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 21.0D;
-                        } else if (contNum == 7) {
-                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 28.0D;
-                        } else if (contNum == 8) {
-                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 36.0D;
-                        } else if (contNum == 9) {
-                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 45.0D;
-                        } else if (contNum == 10) {
-                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 55.0D;
-                        } else if (contNum == 11) {
-                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 66.0D;
-                        } else if (contNum == 12) {
-                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 78.0D;
-                        } else if (contNum == 13) {
-                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 91.0D;
-                        } else if (contNum == 14) {
-                            this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 105.0D;
-                        }
-                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                        this.apuesta.add("Candado");
-                        this.listaBote.add("1");
-                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                        break;
+                    }
+                    if (aux1.contains("(")) {
+                        contNum -= 1;
+                    }
+                    if (contNum == 1) {
+                        //this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                    } else if (contNum == 2) {
+                        this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 3.0D;
+                    } else if (contNum == 3) {
+                        this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 6.0D;
+                    } else if (contNum == 4) {
+                        this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 10.0D;
+                    } else if (contNum == 5) {
+                        this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 15.0D;
+                    } else if (contNum == 6) {
+                        this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 21.0D;
+                    } else if (contNum == 7) {
+                        this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 28.0D;
+                    } else if (contNum == 8) {
+                        this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 36.0D;
+                    } else if (contNum == 9) {
+                        this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 45.0D;
+                    } else if (contNum == 10) {
+                        this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 55.0D;
+                    } else if (contNum == 11) {
+                        this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 66.0D;
+                    } else if (contNum == 12) {
+                        this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 78.0D;
+                    } else if (contNum == 13) {
+                        this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 91.0D;
+                    } else if (contNum == 14) {
+                        this.apCanL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 105.0D;
+                    }
+                    this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                    this.apuesta.add("Candado");
+                    this.listaBote.add("1");
+                    this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                    break;
                     default:
-                        String[] aux3 = ((String[]) listJugInd.get(i))[1].split("-");
-                        for (int k = 0; k < aux3.length; k++) {
-                            this.apCenL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                        }
-                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                        this.apuesta.add("Centena");
-                        this.listaBote.add("1");
-                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                    String[] aux3 = ((String[]) listJugInd.get(i))[1].split("-");
+                    for (int k = 0; k < aux3.length; k++) {
+                        this.apCenL += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                    }
+                    this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                    this.apuesta.add("Centena");
+                    this.listaBote.add("1");
+                    this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
                 }
             } else {
                 cJBote++;
                 switch (((String[]) listJugInd.get(i))[3]) {
                     case "Fijo":
-                        String[] aux = ((String[]) listJugInd.get(i))[1].split("-");
-                        for (int k = 0; k < aux.length; k++) {
-                            this.apFB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                        }
-                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                        this.apuesta.add("Fijo");
-                        this.listaBote.add("0");
-                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                        break;
+                    String[] aux = ((String[]) listJugInd.get(i))[1].split("-");
+                    for (int k = 0; k < aux.length; k++) {
+                        this.apFB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                    }
+                    this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                    this.apuesta.add("Fijo");
+                    this.listaBote.add("0");
+                    this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                    break;
                     case "FijoCorridoF":
-                        String[] aux1 = ((String[]) listJugInd.get(i))[1].split("-");
-                        for (int k = 0; k < aux1.length; k++) {
-                            this.apFB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                        }
-                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                        this.apuesta.add("FijoCorridoF");
-                        this.listaBote.add("0");
-                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                        break;
+                    String[] aux1 = ((String[]) listJugInd.get(i))[1].split("-");
+                    for (int k = 0; k < aux1.length; k++) {
+                        this.apFB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                    }
+                    this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                    this.apuesta.add("FijoCorridoF");
+                    this.listaBote.add("0");
+                    this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                    break;
                     case "Corrido":
-                        String[] aux0 = ((String[]) listJugInd.get(i))[1].split("-");
-                        for (int k = 0; k < aux0.length; k++) {
-                            this.apCB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                            System.out.println("Corrido " + this.apCB);
-                        }
-                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                        this.apuesta.add("Corrido");
-                        this.listaBote.add("0");
-                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                        break;
+                    String[] aux0 = ((String[]) listJugInd.get(i))[1].split("-");
+                    for (int k = 0; k < aux0.length; k++) {
+                        this.apCB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                        System.out.println("Corrido " + this.apCB);
+                    }
+                    this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                    this.apuesta.add("Corrido");
+                    this.listaBote.add("0");
+                    this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                    break;
                     case "FijoCorridoC":
-                        String[] aux3 = ((String[]) listJugInd.get(i))[1].split("-");
-                        for (int k = 0; k < aux3.length; k++) {
-                            this.apCB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                        }
-                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                        this.apuesta.add("FijoCorridoC");
-                        this.listaBote.add("0");
-                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                        break;
+                    String[] aux3 = ((String[]) listJugInd.get(i))[1].split("-");
+                    for (int k = 0; k < aux3.length; k++) {
+                        this.apCB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                    }
+                    this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                    this.apuesta.add("FijoCorridoC");
+                    this.listaBote.add("0");
+                    this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                    break;
                     case "Parlet":
-                        this.apPB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                        this.apuesta.add("Parlet");
-                        this.listaBote.add("0");
-                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                        break;
+                    this.apPB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                    this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                    this.apuesta.add("Parlet");
+                    this.listaBote.add("0");
+                    this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                    break;
                     case "PlayF":
-                        this.apPFB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                        this.apuesta.add("PlayF");
-                        this.listaBote.add("0");
-                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                        break;
+                    this.apPFB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                    this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                    this.apuesta.add("PlayF");
+                    this.listaBote.add("0");
+                    this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                    break;
                     case "Pik":
-                        this.apPKb += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                        this.apuesta.add("Pik");
-                        this.listaBote.add("0");
-                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                        break;
+                    this.apPKb += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                    this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                    this.apuesta.add("Pik");
+                    this.listaBote.add("0");
+                    this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                    break;
                     case "Mill":
-                        this.apMb += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                        this.apuesta.add("Mill");
-                        this.listaBote.add("0");
-                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                        break;
+                    this.apMb += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                    this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                    this.apuesta.add("Mill");
+                    this.listaBote.add("0");
+                    this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                    break;
                     case "Candado":
-                        int contNum = 0;
-                        String auxx = ((String[]) listJugInd.get(i))[1];
-                        for (int k = 0; k < auxx.length(); k++) {
-                            if (auxx.charAt(k) == '-') {
-                                contNum++;
-                            }
+                    int contNum = 0;
+                    String auxx = ((String[]) listJugInd.get(i))[1];
+                    for (int k = 0; k < auxx.length(); k++) {
+                        if (auxx.charAt(k) == '-') {
+                            contNum++;
                         }
-                        if (auxx.contains("(")) {
-                            contNum -= 1;
-                        }
-                        if (contNum == 1) {
-                            //this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                        } else if (contNum == 2) {
-                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 3.0D;
-                        } else if (contNum == 3) {
-                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 6.0D;
-                        } else if (contNum == 4) {
-                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 10.0D;
-                        } else if (contNum == 5) {
-                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 15.0D;
-                        } else if (contNum == 6) {
-                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 21.0D;
-                        } else if (contNum == 7) {
-                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 28.0D;
-                        } else if (contNum == 8) {
-                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 36.0D;
-                        } else if (contNum == 9) {
-                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 45.0D;
-                        } else if (contNum == 10) {
-                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 55.0D;
-                        } else if (contNum == 11) {
-                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 66.0D;
-                        } else if (contNum == 12) {
-                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 78.0D;
-                        } else if (contNum == 13) {
-                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 91.0D;
-                        } else if (contNum == 14) {
-                            this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 105.0D;
-                        }
-                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                        this.apuesta.add("Candado");
-                        this.listaBote.add("0");
-                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
-                        break;
+                    }
+                    if (auxx.contains("(")) {
+                        contNum -= 1;
+                    }
+                    if (contNum == 1) {
+                        //this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                    } else if (contNum == 2) {
+                        this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 3.0D;
+                    } else if (contNum == 3) {
+                        this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 6.0D;
+                    } else if (contNum == 4) {
+                        this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 10.0D;
+                    } else if (contNum == 5) {
+                        this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 15.0D;
+                    } else if (contNum == 6) {
+                        this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 21.0D;
+                    } else if (contNum == 7) {
+                        this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 28.0D;
+                    } else if (contNum == 8) {
+                        this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 36.0D;
+                    } else if (contNum == 9) {
+                        this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 45.0D;
+                    } else if (contNum == 10) {
+                        this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 55.0D;
+                    } else if (contNum == 11) {
+                        this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 66.0D;
+                    } else if (contNum == 12) {
+                        this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 78.0D;
+                    } else if (contNum == 13) {
+                        this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 91.0D;
+                    } else if (contNum == 14) {
+                        this.apCanB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue() * 105.0D;
+                    }
+                    this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                    this.apuesta.add("Candado");
+                    this.listaBote.add("0");
+                    this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                    break;
                     default:
-                        String[] aux4 = ((String[]) listJugInd.get(i))[1].split("-");
-                        for (int k = 0; k < aux4.length; k++) {
-                            this.apCenB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
-                        }
-                        this.jugada.add(((String[]) listJugInd.get(i))[1]);
-                        this.apuesta.add("Centena");
-                        this.listaBote.add("0");
-                        this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
+                    String[] aux4 = ((String[]) listJugInd.get(i))[1].split("-");
+                    for (int k = 0; k < aux4.length; k++) {
+                        this.apCenB += Double.valueOf(((String[]) listJugInd.get(i))[2]).doubleValue();
+                    }
+                    this.jugada.add(((String[]) listJugInd.get(i))[1]);
+                    this.apuesta.add("Centena");
+                    this.listaBote.add("0");
+                    this.dineroApuesta.add(Double.valueOf(((String[]) listJugInd.get(i))[2]));
                 }
             }
         }
@@ -3321,13 +3350,13 @@ public class principal extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        if (!this.jTextField1.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Se generará el tiro pasandole los números (" + this.jTextField1.getText() + ")", "Loto-Desktop Generar Tiro", 1);
+        if (!this.jtf_numerosTiro.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Se generará el tiro pasandole los números (" + this.jtf_numerosTiro.getText() + ")", "Loto-Desktop Generar Tiro", 1);
 
             Boolean tipoParlet = jCh_tipoParlet.isSelected();
 
             double[] tiro;
-            tiro = ut.generarTiro(jTextField1.getText().split(" "), ut.jugadaLimpia(jugada, dineroApuesta, apuesta), apuesta, dineroApuesta, listaBote, preciosLista, preciosBote, preciosLimLista, preciosLimBote, numerosLimLista, numerosLimBote, tipoParlet);
+            tiro = ut.generarTiro(jtf_numerosTiro.getText().split(" "), ut.jugadaLimpia(jugada, dineroApuesta, apuesta), apuesta, dineroApuesta, listaBote, preciosLista, preciosBote, preciosLimLista, preciosLimBote, numerosLimLista, numerosLimBote, tipoParlet);
 
             // Pongo el resultado del tiro en la lista y el bote
             jLabel7.setText(String.valueOf(tiro[0]));
@@ -3367,20 +3396,65 @@ public class principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+    private void jtf_numerosTiroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_numerosTiroKeyTyped
         // TODO add your handling code here:
 
-        if (this.jTextField1.getText().length() >= 9) {
+        if (this.jtf_numerosTiro.getText().length() >= 9) {
             JOptionPane.showMessageDialog(null, "No puedo poner mas n?meros, lo correcto es (123 25 54).", "Error", 0);
             evt.consume();
-        } else if ((this.jTextField1.getText().length() == 3) || (this.jTextField1.getText().length() == 6)) {
-            this.jTextField1.setText(this.jTextField1.getText() + " ");
+        } else if ((this.jtf_numerosTiro.getText().length() == 3) || (this.jtf_numerosTiro.getText().length() == 6)) {
+            this.jtf_numerosTiro.setText(this.jtf_numerosTiro.getText() + " ");
         }
-    }//GEN-LAST:event_jTextField1KeyTyped
+    }//GEN-LAST:event_jtf_numerosTiroKeyTyped
 
-    private void jCh_tipoParletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCh_tipoParletActionPerformed
+    private void gTiro() {
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCh_tipoParletActionPerformed
+        if (!jtf_numerosTiro.getText().equals("")) {
+            //JOptionPane.showMessageDialog(null, "Se generará el tiro pasandole los números (" + jTextField1.getText() + ")", "Loto-Desktop Generar Tiro", WIDTH);
+
+            Boolean tipoParlet = jCh_tipoParlet.isSelected();
+            double[] tiro;
+            tiro = ut.generarTiro(jtf_numerosTiro.getText().split(" "), ut.jugadaLimpia(jugada, dineroApuesta, apuesta), apuesta, dineroApuesta, listaBote, preciosLista, preciosBote, preciosLimLista, preciosLimBote, numerosLimLista, numerosLimBote, tipoParlet);
+
+            // Pongo el resultado del tiro en la lista y el bote
+            jLabel7.setText(String.valueOf(tiro[0]));
+            jLabel29.setText(String.valueOf(tiro[1]));
+
+            //Pongo el neto en la lista y el bote y le cambio los colores
+            jLabel8.setText("" + (Double.valueOf(jlLimpioBote.getText()) - tiro[0]));
+            if (Double.valueOf(jLabel8.getText()) < 0) {
+                jLabel8.setForeground(Color.red);
+            } else {
+                jLabel8.setForeground(Color.green);
+            }
+
+            jLabel30.setText("" + (Double.valueOf(jlLimpioLista.getText()) - tiro[1]));
+            if (Double.valueOf(jLabel30.getText()) < 0) {
+                jLabel30.setForeground(Color.red);
+            } else {
+                jLabel30.setForeground(Color.green);
+            }
+
+            jLabel22.setText("" + (Double.valueOf(jlLimpioTotal.getText()) - (tiro[1]) + tiro[0]));
+
+            // Pongo el total del ganador y el total del neto
+            jLabel21.setText(String.valueOf(tiro[0] + tiro[1]));
+            jLabel22.setText("" + (Math.rint(Double.valueOf(jLabel8.getText())) + Math.rint(Double.valueOf(jLabel30.getText()))));
+
+            if (Double.valueOf(jLabel22.getText()) < 0) {
+                jLabel22.setForeground(Color.red);
+            } else {
+                jLabel22.setForeground(Color.green);
+            }
+            System.out.println("" + (Double.valueOf(jLabel8.getText()) + Double.valueOf(jLabel30.getText())));
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Recuerde que debe introducir los números para generar el tiro", "Loto-Desktop Generar Tiro", WIDTH);
+
+        }
+    }
+
+
 
     public static void openURL(String url) {
         String osName = System.getProperty("os.name");
@@ -3447,6 +3521,7 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup group_d_n;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -3454,6 +3529,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JComboBox<String> jCB_dias;
     private javax.swing.JCheckBox jCh_tipoParlet;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -3584,7 +3660,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel jlBrutoBote;
     private javax.swing.JLabel jlBrutoLista;
     private javax.swing.JLabel jlBrutoTotal;
@@ -3592,6 +3667,9 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jlLimpioLista;
     private javax.swing.JLabel jlLimpioTotal;
     private javax.swing.JLabel jlNombreLista;
+    private javax.swing.JRadioButton jrb_dia;
+    private javax.swing.JRadioButton jrb_noche;
+    private javax.swing.JTextField jtf_numerosTiro;
     private javax.swing.JTextField limCentena;
     private javax.swing.JTextField limCentenaLista;
     private javax.swing.JTextField limCorrido;
